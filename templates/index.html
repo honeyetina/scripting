@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Latitude</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <section>
+                <div class="jumbotron text-center">
+                    <h1>Mission to Mars</h1>
+                    <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
+                </div>
+            </section>
+            <section>
+                <h2>{{ res['redplanetscience']['news_title']}} </h2>
+                <p>{{ res['redplanetscience']['news_p']}} </p>
+            </section>
+        </div>
+        <div class="col-md-8">
+            <h2>Featured Mars Image</h2>
+            <section>
+                <img src={{ res['spaceimages-mars'] }}>
+            </section>         
+        </div>
+        <div class="col-md-4">
+            <h4>Mars Facts</h4>
+            {{ res['galaxyfacts-mars']|safe }}
+        </div>
+        <div class="col-md-12">
+            <h1>Latest Mars NewsMars Hemispheres</h1>
+            <div class="row">
+                {% for dic in res['marshemispheres'] %}
+                    <div class="col-md-3">
+                        <div class="card">
+                            <a href={{ dic['img_url'] }}>
+                                <img class="card-img-top" src={{ dic['img_url'] }} alt={{ dic['title'] }}>
+                            </a>
+                            <div class="card-body">
+                                <h5 class="card-title">{{ dic['title'] }}</h5>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
